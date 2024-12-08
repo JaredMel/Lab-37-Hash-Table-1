@@ -32,11 +32,17 @@ int main() {
 
     cout << "First 100 map entries:" << endl;
     map<int,list<string>>::iterator it = hash_table.begin();
+    it++;
     for (size_t i = 0; i < 100; i++)
     {
-        cout << 
+        cout << "[Key]: " << it->first << " [Value]: ";
+        for (string value : it->second)
+        {
+            cout << value << ", ";
+        }
+        cout << endl;
+        it++;
     }
-    
     
     return 0;
 }
