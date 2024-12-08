@@ -1,21 +1,32 @@
 #include <iostream>
 #include <cstring>
+#include <fstream>
 using namespace std;
 
 int sum_ascii(string);
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
+    int total = 0;
+    string temp;
+    ifstream ifs;
 
-    string teststr = "AB";
-    int test = sum_ascii(teststr);
-    cout << test << endl;
+    ifs.open("lab-37-data.txt");
+    if (ifs)
+    {
+        while (getline(ifs, temp))
+        {
+            getline(ifs, temp);
+            total += sum_ascii(temp);
+        }
+    }
+    else 
+    {
+        cout << "ERROR: Opening File" << endl;
+    }
+    ifs.close();
 
+    cout << "Grand Total: " << total << endl;
+    
     return 0;
 }
 
