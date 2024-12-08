@@ -1,14 +1,17 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
-int sum_ascii(string);
+int gen_hash_index(string);
 
 int main() {
-    int total = 0;
     string temp;
+    int tempIndex;
     ifstream ifs;
+    map<int,list<string>> hash_table;
 
     ifs.open("lab-37-data.txt");
     if (ifs)
@@ -16,7 +19,7 @@ int main() {
         while (getline(ifs, temp))
         {
             getline(ifs, temp);
-            total += sum_ascii(temp);
+            tempIndex = gen_hash_index(temp);
         }
     }
     else 
@@ -24,13 +27,11 @@ int main() {
         cout << "ERROR: Opening File" << endl;
     }
     ifs.close();
-
-    cout << "Grand Total: " << total << endl;
     
     return 0;
 }
 
-int sum_ascii(string s)
+int gen_hash_index(string s)
 {
     int sum = 0;
     char arr[s.length() + 1];
@@ -40,7 +41,7 @@ int sum_ascii(string s)
     {
         sum += (int) arr[i];
     }
-    
+
     return sum;
 }
 
