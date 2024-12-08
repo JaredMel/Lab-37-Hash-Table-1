@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
+
+int sum_ascii(string);
 
 int main() {
     char a = 'A';
@@ -9,7 +12,25 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
 
+    string teststr = "AB";
+    int test = sum_ascii(teststr);
+    cout << test << endl;
+
     return 0;
+}
+
+int sum_ascii(string s)
+{
+    int sum = 0;
+    char arr[s.length() + 1];
+
+    strcpy(arr, s.c_str());
+    for (size_t i = 0; i < s.length(); i++)
+    {
+        sum += (int) arr[i];
+    }
+    
+    return sum;
 }
 
 /*
