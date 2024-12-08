@@ -20,6 +20,8 @@ int main() {
         {
             getline(ifs, temp);
             tempIndex = gen_hash_index(temp);
+            list<string> tempList = {temp};
+            hash_table.insert({tempIndex, tempList});
         }
     }
     else 
@@ -27,6 +29,14 @@ int main() {
         cout << "ERROR: Opening File" << endl;
     }
     ifs.close();
+
+    cout << "First 100 map entries:" << endl;
+    map<int,list<string>>::iterator it = hash_table.begin();
+    for (size_t i = 0; i < 100; i++)
+    {
+        cout << 
+    }
+    
     
     return 0;
 }
