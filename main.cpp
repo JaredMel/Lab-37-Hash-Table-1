@@ -151,7 +151,56 @@ void addKey(map<int,list<string>> &hash_table)
 
 void removeKey(map<int,list<string>> &hash_table)
 {
-    
+    string key;
+    int index;
+    map<int,list<string>>::iterator it;
+
+    cout << "Enter key you wish to remove: " << endl;
+    getline(cin, key);
+
+    index = gen_hash_index(key);
+
+    it = hash_table.find(key);
+    if (it != hash_table.end())
+    {
+        hash_table.erase(it);
+        cout << "Key is not in hash table" << endl;
+    }
+    else
+    {
+        hash_table.erase(it);
+        cout << "Key successfully erased" << endl;
+    }
+}
+
+void modifyKey(map<int,list<string>> &hash_table)
+{
+    string key;
+    string newKey;
+    int index;
+    int newIndex;
+    map<int,list<string>>::iterator it;
+
+    cout << "Enter key you wish to modify: " << endl;
+    getline(cin, key);
+
+    index = gen_hash_index(key);
+
+    it = hash_table.find(key);
+    if (it != hash_table.end())
+    {
+        hash_table.erase(it);
+        cout << "Key is not in hash table" << endl;
+    }
+    else
+    {
+        cout << "What do you want to change the key to: " << endl;
+        getline(cin, newKey);
+        newIndex = gen_hash_index(newKey);
+        list<string> keyList = {newKey};
+        hash_table.erase(it);
+        hash_table.insert({newIndex, keyList});
+    }
 }
 
 /*
