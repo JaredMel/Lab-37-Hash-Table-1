@@ -8,6 +8,9 @@ using namespace std;
 int gen_hash_index(string);
 void printFirst100(map<int,list<string>>);
 void searchKey(map<int,list<string>>);
+void addKey(map<int,list<string>>&);
+void removeKey(map<int,list<string>>&);
+void modifyKey(map<int,list<string>>&);
 
 int main() {
     string temp;
@@ -57,13 +60,13 @@ int main() {
             searchKey(hash_table);
             break;
         case 3:
-            searchData(tree);
+            addKey(hash_table);
             break;
         case 4:
-            modifyData(tree);
+            removeKey(hash_table);
             break;
         case 5:
-            modifyKey();
+            modifyKey(hash_table);
             break;
         default:
             break;
@@ -121,8 +124,34 @@ void searchKey(map<int,list<string>> hash_table)
         hash_table.erase (it);
         cout << "Key is not in hash table" << endl;
     }
+    else
+    {
+        cout << "[Key]: " << key << " [Value]: ";
+        for (string value : it->second)
+        {
+            cout << value << ", ";
+        }
+    }
+    cout << endl;
+}
 
-    cout << "[Key]: " << key << " [Value]: " <<  << endl;
+void addKey(map<int,list<string>> &hash_table)
+{
+    string key;
+    int index;
+
+    cout << "Enter key you wish to add: " << endl;
+    getline(cin, key);
+
+    index = gen_hash_index(key);
+    list<string> keyList = {key};
+    hash_table.insert({index, keyList});
+    cout << "Sucessfully inserted " << key << endl;
+}
+
+void removeKey(map<int,list<string>> &hash_table)
+{
+    
 }
 
 /*
