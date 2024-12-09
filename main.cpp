@@ -106,7 +106,23 @@ void printFirst100(map<int,list<string>> hash_table)
 
 void searchKey(map<int,list<string>> hash_table)
 {
-    
+    string key;
+    int index;
+    map<int,list<string>>::iterator it;
+
+    cout << "Enter the Key you are searching for:" << endl;
+    getline(cin, key);
+
+    index = gen_hash_index(key);
+
+    it = hash_table.find(key);
+    if (it != hash_table.end())
+    {
+        hash_table.erase (it);
+        cout << "Key is not in hash table" << endl;
+    }
+
+    cout << "[Key]: " << key << " [Value]: " <<  << endl;
 }
 
 /*
