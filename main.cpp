@@ -6,11 +6,14 @@
 using namespace std;
 
 int gen_hash_index(string);
+void printFirst100(map<int,list<string>>);
+void searchKey(map<int,list<string>>);
 
 int main() {
     string temp;
     int tempIndex;
     ifstream ifs;
+    int choice;
     map<int,list<string>> hash_table;
 
     ifs.open("lab-37-data.txt");
@@ -30,18 +33,41 @@ int main() {
     }
     ifs.close();
 
-    cout << "First 100 map entries:" << endl;
-    map<int,list<string>>::iterator it = hash_table.begin();
-    it++;
-    for (size_t i = 0; i < 100; i++)
+    while (choice != 0)
     {
-        cout << "[Key]: " << it->first << " [Value]: ";
-        for (string value : it->second)
+        do
         {
-            cout << value << ", ";
+            cout << "Hash Table Menu:" << endl;
+            cout << "[1] Print first 100 entries" << endl;
+            cout << "[2] Search for a key" << endl;
+            cout << "[3] Add a key" << endl;
+            cout << "[4] Remove a key" << endl;
+            cout << "[5] Modify a key" << endl;
+            cout << "[0] Exit" << endl;
+            cout << "Enter your choice:" << endl;
+            cin >> choice;
+        } while (choice < 0 || choice > 5);
+        
+        switch (choice)
+        {
+        case 1:
+            printFirst100(hash_table);
+            break;
+        case 2:
+            searchKey(hash_table);
+            break;
+        case 3:
+            searchData(tree);
+            break;
+        case 4:
+            modifyData(tree);
+            break;
+        case 5:
+            modifyKey();
+            break;
+        default:
+            break;
         }
-        cout << endl;
-        it++;
     }
     
     return 0;
@@ -59,6 +85,28 @@ int gen_hash_index(string s)
     }
 
     return sum;
+}
+
+void printFirst100(map<int,list<string>> hash_table)
+{
+    cout << "First 100 map entries:" << endl;
+    map<int,list<string>>::iterator it = hash_table.begin();
+    it++;
+    for (size_t i = 0; i < 100; i++)
+    {
+        cout << "[Key]: " << it->first << " [Value]: ";
+        for (string value : it->second)
+        {
+            cout << value << ", ";
+        }
+        cout << endl;
+        it++;
+    }
+}
+
+void searchKey(map<int,list<string>> hash_table)
+{
+    
 }
 
 /*
